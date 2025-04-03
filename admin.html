@@ -7,16 +7,14 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #ffffff; color: #000; }
         .content { max-width: 400px; margin: 50px auto; padding: 20px; border: 2px solid black; border-radius: 10px; }
-        input { padding: 10px; font-size: 16px; margin-top: 10px; }
-        button { padding: 10px 15px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        input, button { padding: 10px; font-size: 16px; margin-top: 10px; }
     </style>
     <script>
         function checkPIN() {
-            const correctPIN = "1009"; // Updated PIN
+            const correctPIN = "1009";
             const enteredPIN = document.getElementById("pin").value;
-
             if (enteredPIN === correctPIN) {
-                window.location.href = "tournament_setup.html"; // Redirect to tournament setup page
+                window.location.href = "tournament_setup.html";
             } else {
                 alert("Incorrect PIN. Try again.");
             }
@@ -27,9 +25,9 @@
     <div class="content">
         <h1>Admin Panel</h1>
         <p>Enter your PIN to access tournament settings.</p>
-        <input type="password" id="pin" placeholder="Enter PIN">
-        <br>
-        <button onclick="checkPIN()">Submit</button>
+        <input type="password" id="pin" placeholder="Enter PIN"><br>
+        <button onclick="checkPIN()">Submit</button><br><br>
+        <button onclick="window.history.back()">Back</button>
     </div>
 </body>
 </html>
