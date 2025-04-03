@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Da Poland Bois</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffffff; color: #000; }
+        .content { max-width: 600px; margin: 50px auto; padding: 20px; border: 2px solid black; border-radius: 10px; }
+        input, button, textarea { padding: 10px; font-size: 16px; margin-top: 10px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Admin Panel</h1>
+        <h2>Add New Tournament</h2>
+        <input type="text" id="tournamentName" placeholder="Tournament Name">
+        <input type="date" id="tournamentDate">
+        <textarea id="tournamentDesc" placeholder="Tournament Description"></textarea>
+        <button onclick="addTournament()">Add Tournament</button>
+        
+        <h2>Manage Tournaments</h2>
+        <ul id="tournamentList"></ul>
+
+        <button onclick="window.history.back()">Back</button>
+    </div>
+
+    <script>
+        let tournaments = [];
+        
+        function addTournament() {
+            let name = document.getElementById("tournamentName").value;
+            let date = document.getElementById("tournamentDate").value;
+            let desc = document.getElementById("tournamentDesc").value;
+            
+            if (!name || !date || !desc) {
+                alert("Please fill all fields.");
+                return;
+            }
+            
+            let newTournament = { name, date, desc };
+            tournaments.push(newTournament);
+            displayTournaments();
+        }
+        
+        function displayTournaments() {
+            let list = document.getElementById("tournamentList");
+            list.innerHTML = "";
+            tournaments.forEach((t, index) => {
+                list.innerHTML += `<li>${t.name} - ${t.date} <br> ${t.desc} <br>
+                <button onclick="removeTournament(${index})">Remove</button></li><br>`;
+            });
+        }
+        
+        function removeTournament(index) {
+            tournaments.splice(index, 1);
+            displayTournaments();
+        }
+    </script>
+</body>
+</html>
